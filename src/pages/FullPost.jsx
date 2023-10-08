@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Markdown from 'react-markdown';
 import { Post } from '../components/Post';
 import { Index } from '../components/AddComment';
 import { CommentsBlock } from '../components/CommentsBlock';
@@ -31,14 +31,14 @@ export const FullPost = () => {
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={data.imageUrl}
+        imageUrl={data.imageUrl ? `http://localhost:4444${data.imageUrl}` : ''}
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}
         commentsCount={3}
         tags={data.tags}
         isFullPost>
-        <p>{data.text}</p>
+        <Markdown>{data.text}</Markdown>,
       </Post>
       <CommentsBlock
         items={[
